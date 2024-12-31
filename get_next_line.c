@@ -6,7 +6,7 @@
 /*   By: ainthana <ainthana@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 11:07:28 by ainthana          #+#    #+#             */
-/*   Updated: 2024/12/28 16:07:46 by ainthana         ###   ########.fr       */
+/*   Updated: 2024/12/31 00:52:44 by ainthana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ char	*read_static(char *line)
 	while (line[i])
 	{
 		stash[j] = line[i];
-		// line[i] = '\0';
+		line[i] = '\0';
 		j++;
 		i++;
 	}
@@ -76,29 +76,29 @@ char *get_next_line(int fd)
 	return (line);
 }
 
-// int	main()
-// {
-// 	char	*str = NULL;
-// 	int			fd;
-// 	size_t		i;
+int	main()
+{
+	char	*str = NULL;
+	int			fd;
+	size_t		i;
 
-// 	i = 0;
-// 	fd = open("file1.txt", O_RDONLY);
-// 	while (i < 2)
-// 	{
-// 		str = get_next_line(fd);
-// 		printf("%s", str);
-// 		free(str);
-// 		i++;
-// 	}
-// 	close(fd);
-// }
+	i = 0;
+	fd = open("file1.txt", O_RDONLY);
+	while (i < 6)
+	{
+		str = get_next_line(fd);
+		printf("%s", str);
+		free(str);
+		i++;
+	}
+	close(fd);
+}
 
-// int	main(void)
-// {
-// 	char	*st;
+// // int	main(void)
+// // {
+// // 	char	*st;
 
-// 	st = "salut\nyone";
-// 	printf("%s\n",read_static(st));
-// 	return (0);
-// }
+// // 	st = "salut\nyone";
+// // 	printf("%s\n",read_static(st));
+// // 	return (0);
+// // }
