@@ -69,14 +69,16 @@ char *get_next_line(int fd)
 	static char	*stash;
 	char		*line;
 
+  if (fd < 0 || BUFFER_SIZE <= 0)
+    return (NULL);
 	line = read_line(fd, stash);
-	// printf("la ligne est : %s\n", line);
+  if (!line)
+    return (NULL);
 	stash = read_static(line);
-	// printf("la stash est : %s\n", stash);
-	return (line);
+  return (line);
 }
 
-int	main()
+/*int	main()
 {
 	char	*str = NULL;
 	int			fd;
@@ -92,13 +94,4 @@ int	main()
 		i++;
 	}
 	close(fd);
-}
-
-// // int	main(void)
-// // {
-// // 	char	*st;
-
-// // 	st = "salut\nyone";
-// // 	printf("%s\n",read_static(st));
-// // 	return (0);
-// // }
+}*/
