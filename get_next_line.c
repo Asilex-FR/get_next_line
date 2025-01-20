@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 11:07:28 by ainthana          #+#    #+#             */
-/*   Updated: 2025/01/20 11:14:35 by marvin           ###   ########.fr       */
+/*   Updated: 2025/01/20 15:46:04 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ char	*get_next_line(int fd)
 
 // 	i = 0;
 // 	fd = open("file1.txt", O_RDONLY);
-// 	while (i < 2)
+// 	while (i < 10)
 // 	{
 // 		str = get_next_line(fd);
 // 		printf("%s", str);
