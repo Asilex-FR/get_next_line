@@ -1,6 +1,1 @@
-salut je fais mon gnl
-et
-
-je vais pas assumer quand je vais valgrind
-et voir tout les
-leaks
+alexis

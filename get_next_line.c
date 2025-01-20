@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ainthana <ainthana@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 11:07:28 by ainthana          #+#    #+#             */
-/*   Updated: 2024/12/31 00:52:44 by ainthana         ###   ########.fr       */
+/*   Updated: 2025/01/20 11:14:35 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char *read_line(int fd, char *stash)
+char	*read_line(int fd, char *stash)
 {
 	char	*line;
 	char	*buffer;
@@ -28,11 +28,11 @@ char *read_line(int fd, char *stash)
 		len_bytes = read(fd, buffer, BUFFER_SIZE);
 		if (len_bytes == -1)
 		{
-			return (NULL);
 			free(buffer);
+			return (NULL);
 		}
 		buffer[len_bytes] = '\0';
-		line = ft_strjoin(line, buffer);
+		line = ft_strjoin(line, buffer, len_bytes);
 	}
 	free(buffer);
 	return (line);
@@ -43,7 +43,7 @@ char	*read_static(char *line)
 	char	*stash;
 	size_t	i;
 	size_t	j;
-	
+
 	i = 0;
 	j = 0;
 	while (line && line[i] != '\n' && line[i])
@@ -61,37 +61,37 @@ char	*read_static(char *line)
 		i++;
 	}
 	stash[j] = '\0';
-	return (stash);		
+	return (stash);
 }
 
-char *get_next_line(int fd)
+char	*get_next_line(int fd)
 {
 	static char	*stash;
 	char		*line;
 
-  if (fd < 0 || BUFFER_SIZE <= 0)
-    return (NULL);
+	if (fd < 0 || BUFFER_SIZE <= 0)
+		return (NULL);
 	line = read_line(fd, stash);
-  if (!line)
-    return (NULL);
+	if (!line)
+		return (NULL);
 	stash = read_static(line);
-  return (line);
+	return (line);
 }
 
-/*int	main()
-{
-	char	*str = NULL;
-	int			fd;
-	size_t		i;
+// int	main()
+// {
+// 	char	*str = NULL;
+// 	int			fd;
+// 	size_t		i;
 
-	i = 0;
-	fd = open("file1.txt", O_RDONLY);
-	while (i < 6)
-	{
-		str = get_next_line(fd);
-		printf("%s", str);
-		free(str);
-		i++;
-	}
-	close(fd);
-}*/
+// 	i = 0;
+// 	fd = open("file1.txt", O_RDONLY);
+// 	while (i < 2)
+// 	{
+// 		str = get_next_line(fd);
+// 		printf("%s", str);
+// 		free(str);
+// 		i++;
+// 	}
+// 	close(fd);
+// }
