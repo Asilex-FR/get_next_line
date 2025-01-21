@@ -63,7 +63,7 @@ char	*read_static(char *line)
 		return (stash);
 	}
 	else
-		return (0);
+		return (NULL);
 }
 
 char	*get_next_line(int fd)
@@ -88,7 +88,7 @@ char	*get_next_line(int fd)
 
 	i = 0;
 	fd = open("file1.txt", O_RDONLY);
-	while (i < 6)
+	while (i < 2)
 	{
 		str = get_next_line(fd);
 		printf("%s", str);
