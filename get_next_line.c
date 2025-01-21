@@ -48,20 +48,22 @@ char	*read_static(char *line)
 	j = 0;
 	while (line && line[i] != '\n' && line[i])
 		i++;
-	if (line[i] == '\n' && line[i + 1])
-		i++;
-	stash = malloc(sizeof(char) * (ft_strlen(line) - i + 1));
-	if (!stash)
-		return (NULL);
-	while (line[i])
+	if (line[i + 1] && line[i] == '\n')
 	{
-		stash[j] = line[i];
-		line[i] = '\0';
-		j++;
 		i++;
+		stash = malloc(sizeof(char) * (ft_strlen(line) - i + 1));
+		if (!stash)
+			return (NULL);
+		while (line[i])
+		{
+			stash[j++] = line[i];
+			line[i++] = '\0';
+		}
+		stash[j] = '\0';
+		return (stash);
 	}
-	stash[j] = '\0';
-	return (stash);
+	else
+		return (0);
 }
 
 char	*get_next_line(int fd)
@@ -78,20 +80,20 @@ char	*get_next_line(int fd)
 	return (line);
 }
 
-// int	main()
-// {
-// 	char	*str = NULL;
-// 	int			fd;
-// 	size_t		i;
+/*int	main()
+{
+	char	*str = NULL;
+	int			fd;
+	size_t		i;
 
-// 	i = 0;
-// 	fd = open("file1.txt", O_RDONLY);
-// 	while (i < 10)
-// 	{
-// 		str = get_next_line(fd);
-// 		printf("%s", str);
-// 		free(str);
-// 		i++;
-// 	}
-// 	close(fd);
-// }
+	i = 0;
+	fd = open("file1.txt", O_RDONLY);
+	while (i < 6)
+	{
+		str = get_next_line(fd);
+		printf("%s", str);
+		free(str);
+		i++;
+	}
+	close(fd);
+}*/
