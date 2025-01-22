@@ -75,7 +75,14 @@ char	*get_next_line(int fd)
 		return (NULL);
 	line = read_line(fd, stash);
 	if (!line)
+	{
+		if (stash)
+		{
+			free(stash);
+			stash = NULL;
+		}
 		return (NULL);
+	}
 	stash = read_static(line);
 	return (line);
 }
