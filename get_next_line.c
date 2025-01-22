@@ -48,7 +48,7 @@ char	*read_static(char *line)
 	j = 0;
 	while (line && line[i] != '\n' && line[i])
 		i++;
-	if (line[i + 1] && line[i] == '\n')
+	if (line[i] && line[i + 1] && line[i] == '\n')
 	{
 		i++;
 		stash = malloc(sizeof(char) * (ft_strlen(line) - i + 1));
@@ -88,7 +88,7 @@ char	*get_next_line(int fd)
 
 	i = 0;
 	fd = open("file1.txt", O_RDONLY);
-	while (i < 2)
+	while (i < 4)
 	{
 		str = get_next_line(fd);
 		printf("%s", str);
