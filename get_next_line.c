@@ -87,20 +87,19 @@ char	*get_next_line(int fd)
 	return (line);
 }
 
-/*int	main()
+int	main()
 {
 	char	*str = NULL;
 	int			fd;
 	size_t		i;
 
 	i = 0;
-	fd = open("file1.txt", O_RDONLY);
-	while (i < 4)
+	fd = open("bible.txt", O_RDONLY);
+	while ((str = get_next_line(fd)))
 	{
-		str = get_next_line(fd);
 		printf("%s", str);
 		free(str);
 		i++;
 	}
 	close(fd);
-}*/
+}
